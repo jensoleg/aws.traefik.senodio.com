@@ -1,0 +1,56 @@
+################################################################
+# Global configuration
+################################################################
+# Log level
+logLevel = "DEBUG"
+#
+# Entrypoints to be used by frontends that do not specify any entrypoint.
+# Each frontend can specify its own entrypoints.
+defaultEntryPoints = ["http", "https"]
+#
+################################################################
+# ACME (Let's Encrypt): automatic SSL
+################################################################
+[acme]
+
+email = "jensole@graulund.net"
+storageFile = "/etc/acme/acme.json"
+entryPoint = "https"
+onDemand = true
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[[acme.domains]]
+  main = "aws.traefik.senodio.com"
+
+################################################################
+# Web configuration backend
+################################################################
+
+# Enable web configuration backend
+[web]
+
+# Web administration port
+address = ":8080"
+
+################################################################
+# Docker configuration backend
+################################################################
+
+# Enable Docker configuration backend
+[docker]
+
+# Docker server endpoint. Can be a tcp or a unix socket endpoint.
+endpoint = "unix:///var/run/docker.sock"
+
+# Default domain used.
+# Can be overridden by setting the "traefik.domain" label on a container.
+domain = "senodio.com"
+
+# Enable watch docker changes
+watch = true
