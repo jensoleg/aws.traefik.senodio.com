@@ -7,7 +7,7 @@ traefik:
     - "8080:8080"
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - /Traefik/acme:/etc/acme
+    - /Traefik/acme:/etc/traefik/acme
   tags:
     - traefik  
 
