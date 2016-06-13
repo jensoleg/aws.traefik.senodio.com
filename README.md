@@ -12,4 +12,4 @@ Installation:
 Create your own Traefik image (docker build -t .../traefik:latest .) and push it to docker hub (docker push .../traefik).
 
 Create a Docker Cloud node and build a stack with the docker-cloud.yml file. Remember to change image name. 
-You should also create a directory '/Traefik/acme' on the node instance. Follow these [instructions](https://docs.docker.com/docker-cloud/infrastructure/ssh-into-a-node/] to login to the node 
+You should also create a directory '/Traefik/acme' on the node instance. Follow these [instructions](https://docs.docker.com/docker-cloud/infrastructure/ssh-into-a-node/) to login to the node 
