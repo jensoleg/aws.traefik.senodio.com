@@ -1,22 +1,13 @@
 ################################################################
 # Global configuration
 ################################################################
+
 # Log level
 logLevel = "DEBUG"
-#
+
 # Entrypoints to be used by frontends that do not specify any entrypoint.
 # Each frontend can specify its own entrypoints.
 defaultEntryPoints = ["http", "https"]
-#
-################################################################
-# ACME (Let's Encrypt): automatic SSL
-################################################################
-[acme]
-
-email = "jensole@graulund.net"
-storageFile = "/etc/acme/acme.json"
-entryPoint = "https"
-onDemand = true
 
 [entryPoints]
   [entryPoints.http]
@@ -24,6 +15,16 @@ onDemand = true
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
+    
+################################################################
+# ACME (Let's Encrypt): automatic SSL
+################################################################
+
+[acme]
+email = "jensole@graulund.net"
+storageFile = "/etc/acme/acme.json"
+entryPoint = "https"
+onDemand = true
 
 [[acme.domains]]
   main = "aws.traefik.senodio.com"
@@ -34,7 +35,6 @@ onDemand = true
 
 # Enable web configuration backend
 [web]
-
 # Web administration port
 address = ":8080"
 

@@ -8,4 +8,3 @@ EXPOSE 80
 EXPOSE 443
 
 COPY ./traefik.toml /var/traefik/traefik.toml 
-COPY ./acme.json /acme

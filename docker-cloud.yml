@@ -7,7 +7,7 @@ traefik:
     - "8080:8080"
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - /acme:/etc/acme
+    - /Traefik/acme:/etc/acme
   tags:
     - traefik  
 
@@ -16,6 +16,6 @@ whoami:
   labels:
     - "traefik.backend=whoami"
     - "traefik.frontend.rule=Host:aws.traefik.senodio.com"
-    - "traefik.port=80"
+    - "traefik.enable=true"
   tags:
     - traefik   
