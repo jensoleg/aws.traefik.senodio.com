@@ -1,10 +1,7 @@
 ################################################################
 # Global configuration
 ################################################################
-
-# Log level
 logLevel = "DEBUG"
-ProvidersThrottleDuration = "2s"
 
 # Entrypoints to be used by frontends that do not specify any entrypoint.
 # Each frontend can specify its own entrypoints.
@@ -13,6 +10,8 @@ defaultEntryPoints = ["http", "https"]
 [entryPoints]
   [entryPoints.http]
   address = ":80"
+  [entryPoints.http.redirect]
+    entryPoint = "https"
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
@@ -20,7 +19,6 @@ defaultEntryPoints = ["http", "https"]
 ################################################################
 # ACME (Let's Encrypt): automatic SSL
 ################################################################
-
 [acme]
 email = "jensole@graulund.net"
 storageFile = "/etc/traefik/acme/acme.json"
@@ -34,17 +32,12 @@ caServer = "https://acme-staging.api.letsencrypt.org/directory"
 ################################################################
 # Web configuration backend
 ################################################################
-
-# Enable web configuration backend
 [web]
-# Web administration port
 address = ":8080"
 
 ################################################################
 # Docker configuration backend
 ################################################################
-
-# Enable Docker configuration backend
 [docker]
 
 # Docker server endpoint. Can be a tcp or a unix socket endpoint.
